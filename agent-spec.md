@@ -202,12 +202,12 @@ ações, transição, teste de objetivo, custo]
 
 ## Resultado obtido no terminal para o D02-Lab03 (Formular como busca)
 Problema escolhido:
-Consulta (consultas.py)
+Diagnóstico (diagnostico_ams.py)
 
-(.venv) luciano (D02) meu-projeto-integrador $ python verificar-formulacao.py comum/problemas/consultas.py:PEQUENA
+(.venv) luciano (D02 *) meu-projeto-integrador $ python verificar-formulacao.py comum/problemas/diagnostico_ams.py:PEQUENA
 verificar-formulacao — teste de sanidade da formulação de busca
 
-— comum/problemas/consultas.py:PEQUENA
+— comum/problemas/diagnostico_ams.py:PEQUENA
   1. estado é hashable ✅
   2. transição é função ✅
   3. ações estáveis na ordem ✅
@@ -217,10 +217,12 @@ verificar-formulacao — teste de sanidade da formulação de busca
   resumo: 6 ✅ · 0 ⚠️ · 0 ❌
 
 Seis verificações verdes — a formulação pode ir para o agent-spec.md e para o lab-04.
-(.venv) luciano (D02) meu-projeto-integrador $ python verificar-formulacao.py comum/problemas/consultas.py:MAIOR
+
+
+(.venv) luciano (D02 *) meu-projeto-integrador $ python verificar-formulacao.py comum/problemas/diagnostico_ams.py:MAIOR
 verificar-formulacao — teste de sanidade da formulação de busca
 
-— comum/problemas/consultas.py:MAIOR
+— comum/problemas/diagnostico_ams.py:MAIOR
   1. estado é hashable ✅
   2. transição é função ✅
   3. ações estáveis na ordem ✅
@@ -230,4 +232,4 @@ verificar-formulacao — teste de sanidade da formulação de busca
   resumo: 6 ✅ · 0 ⚠️ · 0 ❌
 
 Seis verificações verdes — a formulação pode ir para o agent-spec.md e para o lab-04.
-(.venv) luciano (D02) meu-projeto-integrador $ 
+(.venv) luciano (D02 *) meu-projeto-integrador $ 
