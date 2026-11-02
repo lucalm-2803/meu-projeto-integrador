@@ -1,0 +1,122 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Desconhecido </title></head><body>
+<p>(.venv) luciano (D02) D2-04-busca-nao-informada $ python esqueleto.py 
+Formulação: problemas.diagnostico_ams:MAIOR</p>
+<table>
+<thead>
+<tr>
+<th>Busca</th>
+<th align="right">Custo</th>
+<th align="right">Ações</th>
+<th align="right">Nós expandidos</th>
+<th align="right">Nós gerados</th>
+<th align="right">Prof. máx.</th>
+<th align="right">Segundos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>largura</td>
+<td align="right">2138.8</td>
+<td align="right">11</td>
+<td align="right">234781</td>
+<td align="right">243222</td>
+<td align="right">12</td>
+<td align="right">1.0531</td>
+</tr>
+<tr>
+<td>custo_uniforme</td>
+<td align="right">2138.8</td>
+<td align="right">11</td>
+<td align="right">245527</td>
+<td align="right">245725</td>
+<td align="right">15</td>
+<td align="right">1.5774</td>
+</tr>
+<tr>
+<td>profundidade_limitada(limite=32)</td>
+<td align="right">2186.8</td>
+<td align="right">15</td>
+<td align="right">16</td>
+<td align="right">15</td>
+<td align="right">15</td>
+<td align="right">0.0001</td>
+</tr>
+<tr>
+<td>aprofundamento_iterativo(limite=32)</td>
+<td align="right">2138.8</td>
+<td align="right">11</td>
+<td align="right">132308</td>
+<td align="right">861124</td>
+<td align="right">11</td>
+<td align="right">2.2701</td>
+</tr>
+</tbody>
+</table>
+<p>Custo e segundos arredondados. Forma: <code>comum.busca.comparar()</code> em 4.9278 s.</p>
+<p>Lembre a ressalva de contagem (slide 20): a profundidade limitada é recursiva e não tem fronteira — nela, <code>nos_expandidos</code> conta entradas na recursão, sem repetidos. Parte da vantagem aparente dela é diferença de contagem. Registre isso na análise.</p>
+<p>Próximo passo: cole a tabela na entrega e responda — alguma busca achou caminho mais barato que a largura? Em problemas.diagnostico_ams, por quê?</p>
+<hr />
+<p>Não. Largura, custo uniforme e aprofundamento iterativo encontraram o mesmo custo: 2.138,8. A busca limitada em profundidade encontrou um caminho mais caro: 2.186,8, uma diferença de 48.</p>
+<p>Em diagnostico_ams, o objetivo exige fazer todas as 11 verificações marcadas como essenciais (diagnostico_ams.py:113). Esse é o menor caminho possível: 11 ações. A largura minimiza o número de ações; neste caso, esse caminho também custa menos porque as 11 essenciais são obrigatórias e as verificações extras têm custo positivo. O custo uniforme, que minimiza o custo total, chega ao mesmo resultado.</p>
+<p>A busca limitada em profundidade parou no primeiro objetivo que encontrou, com 15 ações, incluindo as quatro verificações não essenciais. Elas somam justamente 48; por isso seu caminho ficou mais caro. Isso é próprio desta instância, não uma garantia de que largura e custo uniforme sempre empatem.</p>
+<h2 id="-">-----------------------------------------</h2>
+<p>(.venv) luciano (D02) D2-05-busca-informada $ python esqueleto.py 
+Formulação: problemas.diagnostico_ams:MAIOR</p>
+<table>
+<thead>
+<tr>
+<th>Busca</th>
+<th align="right">Custo</th>
+<th align="right">Ações</th>
+<th align="right">Nós expandidos</th>
+<th align="right">Nós gerados</th>
+<th align="right">Prof. máx.</th>
+<th align="right">Segundos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gulosa[admissivel]</td>
+<td align="right">2138.8</td>
+<td align="right">11</td>
+<td align="right">12</td>
+<td align="right">110</td>
+<td align="right">11</td>
+<td align="right">0.0013</td>
+</tr>
+<tr>
+<td>a_estrela[admissivel]</td>
+<td align="right">2138.8</td>
+<td align="right">11</td>
+<td align="right">784</td>
+<td align="right">2903</td>
+<td align="right">11</td>
+<td align="right">0.0312</td>
+</tr>
+<tr>
+<td>gulosa[inadmissivel]</td>
+<td align="right">2138.8</td>
+<td align="right">11</td>
+<td align="right">12</td>
+<td align="right">110</td>
+<td align="right">11</td>
+<td align="right">0.0012</td>
+</tr>
+<tr>
+<td>a_estrela[inadmissivel]</td>
+<td align="right">2138.8</td>
+<td align="right">11</td>
+<td align="right">12</td>
+<td align="right">110</td>
+<td align="right">11</td>
+<td align="right">0.0011</td>
+</tr>
+</tbody>
+</table>
+<p>Como ler (slide 36):
+  - A estrela expandindo MAIS que o custo uniforme do lab-04? Heurística fraca.
+  - A estrela com custo PIOR que o custo uniforme? A heurística superestima.
+  - Antes de qualquer outra verificação: h vale zero em todo estado objetivo?
+  - O item que vale nota: o parágrafo da dominância, comparando as duas
+    colunas de expandidos — a evidência são os números, a explicação é sua.</p>
+</body></html>
