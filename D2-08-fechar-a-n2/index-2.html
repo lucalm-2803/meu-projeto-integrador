@@ -1,0 +1,122 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Desconhecido </title></head><body>
+<h1 id="relatorio-de-desempenho-da-linha-de-base-modelo">Relatório de desempenho da linha de base — modelo</h1>
+<!--
+Item 3 da N2. Este relatório tem as quatro informações que o slide 28 do
+E4 cobra, mais a leitura de onde erra (slide 30) — a saída do medir.py já
+traz quase tudo pronto: rode `python medir.py` na pasta do D2-06 (ou do
+seu projeto) e cole no lugar marcado. Responda NOS COLCHETES, apagando
+nada das seções.
+-->
+
+<p><strong>Projeto:</strong> [nome do seu projeto] · <strong>Data:</strong> [data da medição]</p>
+<h2 id="1-a-metrica-primaria">1. A métrica primária</h2>
+<p>[Nome da métrica do seu PEAS, com a fórmula ou o procedimento de cálculo —
+como se calcula, sem ambiguidade. Ex.: acerto da decisão — casos com
+decisão igual à rotulada, sobre o total.]</p>
+<h2 id="2-o-valor">2. O valor</h2>
+<p>[A saída do <code>medir.py</code>, colada: valor, acertos/total. Ex.: 25/30 = 0.8333.]</p>
+<h2 id="3-o-conjunto">3. O conjunto</h2>
+<p>[Sobre quais casos: o arquivo, quantos são, de que período, como se
+distribuem pelos rótulos. Se usou o conjunto de reserva do <code>D2-06</code>,
+declare aqui — sem demérito; a exigência é a declaração.]</p>
+<h2 id="4-onde-o-agente-erra">4. Onde o agente erra</h2>
+<p>[A lista de erros que o <code>medir.py</code> imprime, colada. Depois, dois
+parágrafos: o PADRÃO dos erros (todos do mesmo tipo? concentrados em
+quais casos?) e a HIPÓTESE do porquê — o que o agente não enxerga quando
+erra. Isto é a matéria-prima da análise do item 5.]</p>
+<h2 id="5-a-tabela-comparativa-de-busca-item-4-da-n2">5. A tabela comparativa de busca (item 4 da N2)</h2>
+<p>[Cole aqui a tabela completa dos laboratórios 04 e 05 — as 4 linhas não
+informadas e as 4 informadas. Exemplo da forma (os números são os SEUS):]</p>
+<table>
+<thead>
+<tr>
+<th>Busca</th>
+<th align="right">Custo</th>
+<th align="right">Ações</th>
+<th align="right">Nós expandidos</th>
+<th align="right">Nós gerados</th>
+<th align="right">Prof. máx.</th>
+<th align="right">Segundos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>largura</td>
+<td align="right">20.0</td>
+<td align="right">5</td>
+<td align="right">2786</td>
+<td align="right">6744</td>
+<td align="right">5</td>
+<td align="right">0.0084</td>
+</tr>
+<tr>
+<td>custo_uniforme</td>
+<td align="right">20.0</td>
+<td align="right">5</td>
+<td align="right">550</td>
+<td align="right">1954</td>
+<td align="right">6</td>
+<td align="right">0.0027</td>
+</tr>
+<tr>
+<td>profundidade_limitada(limite=32)</td>
+<td align="right">20.0</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">0.0001</td>
+</tr>
+<tr>
+<td>aprofundamento_iterativo(limite=32)</td>
+<td align="right">20.0</td>
+<td align="right">5</td>
+<td align="right">1192</td>
+<td align="right">3749</td>
+<td align="right">5</td>
+<td align="right">0.0057</td>
+</tr>
+<tr>
+<td>gulosa[admissivel]</td>
+<td align="right">20.0</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">0.0001</td>
+</tr>
+<tr>
+<td>a_estrela[admissivel]</td>
+<td align="right">20.0</td>
+<td align="right">5</td>
+<td align="right">77</td>
+<td align="right">297</td>
+<td align="right">5</td>
+<td align="right">0.0008</td>
+</tr>
+<tr>
+<td>gulosa[inadmissivel]</td>
+<td align="right">83.0</td>
+<td align="right">11</td>
+<td align="right">12</td>
+<td align="right">77</td>
+<td align="right">11</td>
+<td align="right">0.0002</td>
+</tr>
+<tr>
+<td>a_estrela[inadmissivel]</td>
+<td align="right">77.0</td>
+<td align="right">10</td>
+<td align="right">11</td>
+<td align="right">75</td>
+<td align="right">10</td>
+<td align="right">0.0002</td>
+</tr>
+</tbody>
+</table>
+<p>[A pergunta do item 4: o A estrela com a heurística admissível manteve o
+custo ótimo e expandiu menos que o custo uniforme? Quanto economizou, e o
+que isso diz do seu espaço de estados? Registre também a ressalva de
+contagem da profundidade limitada — reconhecer o limite da própria
+medição vale nota.]</p>
+</body></html>

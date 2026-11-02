@@ -14,8 +14,8 @@ para qualquer empresa é uma linha genérica — o exemplo do seu segmento
 (agente-spec-exemplo.pdf, no mesmo pacote) mostra o contraste.
 -->
 
-**Domínio:** [título curto do domínio, do dominio.md da D1]
-**Autor(a):** [seu nome] · **Última revisão:** [data]
+**Domínio:** AMS · Assistente de Manutenção Segura
+**Autor(a):** Luciano Mendes Almeida e assistente de IA · **Última revisão:** 02/11/2026
 
 ---
 
@@ -44,6 +44,8 @@ para qualquer empresa é uma linha genérica — o exemplo do seu segmento
 **Medida, conjunto e limiar:** Proporção de ordens de serviço reabertas em até 30 dias sobre o total de ordens fechadas, medida nas 200 ordens do último trimestre, com meta de ficar abaixo de 5%.
 
 **Controle antitrapaça:** Contabilizar a reabertura em 30 dias impede a trapaça de fechar ordens rapidamente sem avaliar o risco real de falha da máquina ou sem aplicar os procedimentos de segurança exigidos.
+
+**Revisão N2 — o que mudou e por quê:** não houve devolutiva do E3. Mantive a meta de retrabalho já definida e esclareci que a acurácia dos 30 casos do baseline é uma medida proxy, não a taxa de reabertura em ordens reais.
 
 **Environment:**
 
@@ -77,8 +79,17 @@ Perguntas que guiam o preenchimento (uma por dimensão):
 -->
 **Quando se preenche:** no Laboratório 02, no sábado (encontro 2).
 
-[uma linha por dimensão: a classificação e a frase de
-justificativa — começando por observabilidade e determinismo]
+| Dimensão | Classificação | Justificativa |
+|---|---|---|
+| Observabilidade | Parcialmente observável | Sensores e descrição da OS não mostram toda a condição da máquina; falhas futuras e fatores omitidos não são percebidos antes da decisão. |
+| Número de agentes | Multiagente | Técnico e supervisor recebem ou auditam a recomendação e suas decisões afetam o resultado operacional. |
+| Determinismo | Estocástico | Falhas, execução humana e respostas do modelo podem variar mesmo com dados semelhantes. |
+| Episódico ou sequencial | Episódico por OS, com histórico | Cada OS recebe um parecer próprio, mas a memória de falhas recentes pode influenciar avaliações seguintes. |
+| Estático ou dinâmico | Semidinâmico | A OS não muda durante a análise, mas a demora reduz o valor da recomendação para o técnico. |
+| Discreto ou contínuo | Estado contínuo; ações discretas | Leituras de sensores são contínuas; classes de risco, normas e decisões são saídas discretas. |
+| Conhecido ou desconhecido | Regras conhecidas; risco aprendido | As NRs são documentadas, mas a relação entre leituras e falhas precisa ser estimada a partir de dados. |
+
+**Revisão N2 — o que mudou e por quê:** explicitei que a avaliação é por OS, mas o histórico conecta decisões sucessivas, para compatibilizar o recorte episódico com a memória do baseline.
 
 ---
 
@@ -94,8 +105,9 @@ Perguntas que guiam o preenchimento:
 -->
 **Quando se preenche:** no sábado (encontro 2, manhã).
 
-[o tipo mais simples que resolve, justificado pela dimensão
-do ambiente que o obriga]
+O tipo mais simples adequado é um agente baseado em modelo, com estado interno: a observabilidade parcial faz a leitura atual ser insuficiente, e o agente precisa guardar as falhas recentemente observadas. A ação final continua sendo recomendação ao técnico. A busca é aplicável ao subproblema de ordenar verificações, não substitui a memória nem a avaliação de risco da OS.
+
+**Revisão N2 — o que mudou e por quê:** confirmei a escolha com os erros C07/C08, que mostram a importância do histórico, e delimitei a busca ao subproblema efetivamente medido nos laboratórios.
 
 ---
 
@@ -114,9 +126,15 @@ Perguntas que guiam o preenchimento:
 operacional completa — primária, secundárias, conjunto e limiar — é item da
 Atividade Orientada.
 
-[métrica primária e duas secundárias, cada uma com: como se
-calcula, sobre qual conjunto, qual o limiar de sucesso e o
-valor de hoje]
+**Primária — taxa de retrabalho:** (OS reabertas em até 30 dias ÷ OS fechadas) × 100, sobre 200 OS do último trimestre; sucesso abaixo de 5%. Valor atual: não medido, pois o projeto ainda não dispõe dessas OS com acompanhamento de 30 dias.
+
+**Secundária 1 — sensibilidade para parada:** casos rotulados `parar_para_manutencao` decididos como parada ÷ total de casos rotulados para parada. No conjunto do D2-06: 8/8 = 100%; limiar de segurança: 100%.
+
+**Secundária 2 — latência:** percentil 95 do tempo entre receber a OS e emitir o parecer; limite técnico atual de 30 s, conforme timeout da chamada ao modelo. Valor medido: não disponível no experimento do baseline, que não registra latência.
+
+**Medida complementar do baseline:** acerto exato da decisão = decisões iguais ao rótulo ÷ 30 casos rotulados. Resultado atual: 25/30 = 83,33%, em `D2-06-agente-baseline/dados/meus_casos.csv` (01 a 16/04/2026; 16 seguir, 8 parar e 6 inspecionar). Esse conjunto não mede a métrica primária de retrabalho.
+
+**Revisão N2 — o que mudou e por quê:** separei a meta operacional de retrabalho do acerto medido em casos rotulados e registrei os valores indisponíveis em vez de inferi-los do baseline.
 
 ---
 
@@ -133,9 +151,15 @@ Perguntas que guiam o preenchimento:
 -->
 **Quando se preenche:** na Atividade Orientada.
 
-[latência aceitável, custo aceitável, o que o agente jamais
-pode fazer sozinho, e a troca qualidade × custo que você
-aceita — com um exemplo numérico]
+**Latência:** timeout técnico de 30 s na chamada ao modelo; o p95 ainda precisa ser medido em OS representativas para validar que esse limite atende ao técnico.
+
+**Custo:** não há teto monetário por OS definido nos registros do projeto; acompanhar o custo por avaliação e a cota do provedor é requisito antes de ampliar o uso.
+
+**Ações vedadas sem humano:** comandar parada/partida, executar ou remover LOTO, ou declarar a máquina liberada. O agente recomenda e escala; profissional autorizado executa.
+
+**Troca qualidade × custo:** priorizar não deixar passar uma condição que exige parada ou inspeção; quando dados conflitarem ou a confiança for insuficiente, escalar ao técnico/supervisor em vez de produzir uma liberação automática. O limiar monetário e a latência de negócio permanecem para validação com usuários.
+
+**Revisão N2 — o que mudou e por quê:** registrei o timeout já implementado e distingui-o de um SLA validado; não inventei teto de custo nem deleguei ao agente ações físicas.
 
 ---
 
@@ -154,8 +178,9 @@ Perguntas que guiam o preenchimento:
 **Quando se preenche:** na Atividade Orientada — o pacote `D2-07` traz o
 modelo da tabela e dois exemplos preenchidos.
 
-[tabela: nome · entrada · saída · é reversível? · risco se
-errar — ações de leitura e de escrita]
+A tabela completa com entradas, saídas, reversibilidade, riscos e ações de leitura e escrita está no [catálogo de ações](D2-07-catalogo-de-acoes/catalogo-de-acoes-modelo.md). Ela inclui consulta à OS, histórico e normas; avaliação, comunicação, registro e escalonamento; e deixa a execução física do LOTO exclusivamente com profissional autorizado.
+
+**Revisão N2 — o que mudou e por quê:** vinculei o catálogo já preenchido, que é a fonte detalhada das ações, para evitar manter duas tabelas divergentes.
 
 ---
 
@@ -171,22 +196,21 @@ Perguntas que guiam o preenchimento:
 -->
 **Quando se preenche:** no Laboratório 03, sábado à tarde (encontro 2).
 
-[os cinco componentes do seu subproblema: estado inicial,
-ações, transição, teste de objetivo, custo]
+**Subproblema:** ordenar as verificações de um diagnóstico de manutenção, conforme `comum/problemas/diagnostico_ams.py:MAIOR`.
 
-## As respostas do meu domínio
+- **Estado inicial:** nenhuma verificação feita e nenhum resultado positivo.
+- **Ações:** executar uma verificação ainda não feita.
+- **Transição:** acrescentar a verificação ao conjunto das feitas e, quando aplicável, ao conjunto das positivas; estado é função do estado e da ação.
+- **Teste de objetivo:** todas as 11 verificações essenciais foram feitas.
+- **Custo:** soma dos tempos das verificações executadas.
 
-**Domínio:** AMS · Assistente de Manutenção Segura
+A formulação passou os seis testes de sanidade (estado hashable, transição funcional, ações estáveis, custo não negativo, objetivo alcançável e estado sem histórico do caminho).
 
-| Dimensão | Minha classificação | Justificativa (uma frase) |
-|---|---|---|
-| Observabilidade | Parcialmente observável | Os sensores medem apenas quatro variáveis físicas e o texto da ordem é sucinto, não capturando fadiga oculta da máquina nem condições reais omitidas do chão de fábrica. |
-| Número de agentes | Multiagente | O técnico de manutenção (que decide a execução final) e o supervisor de segurança (que audita) reagem às recomendações do agente e afetam diretamente o resultado operacional. |
-| Determinismo | Estocástico | A ocorrência real de falha mecânica é probabilística, a execução humana varia e a geração de resposta pelo modelo de linguagem (LLM) é estocástica por natureza. |
-| Episódico ou sequencial | Episódico (por OS) | Cada ordem de serviço é avaliada de forma independente para gerar o objeto `AvaliacaoRisco`, embora no longo prazo o desgaste físico da máquina na planta seja cumulativo. |
-| Estático ou dinâmico | Semidinâmico | A ordem de serviço e as normas não mudam durante a análise, mas o técnico atua sob pressão de tempo entre intervenções, fazendo a demora degradar o valor da recomendação. |
-| Discreto ou contínuo | Contínuo (estado) / Discreto (ações) | As leituras dos sensores (temperatura, rotação, torque e desgaste) são grandezas contínuas, enquanto as saídas do agente (3 níveis de risco, 3 NRs e LOTO) são discretas. |
-| Conhecido ou desconhecido | Conhecido (normas) / Aprendido em dados (falhas) | As regras de segurança estão documentadas nas NRs (NR-10, NR-12, NR-35), enquanto a relação probabilística entre sensores e falha é extraída do histórico (*AI4I 2020*). |
+**Revisão N2 — o que mudou e por quê:** acrescentei os cinco componentes e o resultado de sanidade do Lab-03 para ligar a formulação aos números dos Labs 04 e 05.
+
+## Implicações da caracterização do ambiente
+
+As classificações completas estão na seção 2; as consequências para a arquitetura são:
 
 **O que a tabela de consequências obriga no meu projeto:**
 
