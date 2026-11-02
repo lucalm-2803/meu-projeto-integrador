@@ -1,0 +1,88 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Desconhecido </title></head><body>
+<h1 id="catalogo-de-acoes-ams-assistente-de-manutencao-segura">Catálogo de ações — AMS · Assistente de Manutenção Segura</h1>
+<p>O catálogo descreve o repertório necessário para avaliar uma ordem de serviço
+industrial e apoiar o técnico. O AMS recomenda; não substitui a decisão do
+técnico nem controla diretamente a máquina. As ações de consulta e análise são
+reversíveis porque não alteram a planta; comunicação, registro e execução
+operacional têm os riscos e limites descritos abaixo.</p>
+<table>
+<thead>
+<tr>
+<th>Ação</th>
+<th>Entrada</th>
+<th>Saída</th>
+<th>É reversível?</th>
+<th>Risco se errar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consultar a ordem de serviço e as leituras atuais</td>
+<td>Identificador da OS ou da máquina; leitura disponível dos sensores</td>
+<td>Identificação da máquina, descrição da intervenção e leituras atuais validadas (temperatura, rotação, torque e desgaste)</td>
+<td>Sim — apenas consulta dados</td>
+<td>Associar a leitura à máquina errada ou usar leitura desatualizada pode produzir uma avaliação falsamente segura ou atrasar a manutenção</td>
+</tr>
+<tr>
+<td>Consultar o histórico de falhas disponível</td>
+<td>Identificador da máquina e registros históricos disponíveis</td>
+<td>Falhas e padrões relevantes encontrados, com indicação de lacunas ou ausência de histórico específico da máquina</td>
+<td>Sim — apenas consulta dados</td>
+<td>Histórico incompleto ou não representativo pode ocultar um padrão de falha e reduzir indevidamente o risco estimado</td>
+</tr>
+<tr>
+<td>Consultar os requisitos das normas aplicáveis</td>
+<td>Descrição da intervenção, contexto informado e corpus vigente das NR-10, NR-12 e NR-35</td>
+<td>Requisitos e trechos de referência pertinentes; normas aplicáveis ou indicação explícita de que nenhuma foi identificada</td>
+<td>Sim — apenas consulta documentos</td>
+<td>Omitir ou interpretar incorretamente um requisito pode levar o técnico a iniciar uma intervenção sem a proteção exigida</td>
+</tr>
+<tr>
+<td>Avaliar o risco e preparar o parecer de segurança</td>
+<td>OS, leituras validadas, histórico disponível e requisitos normativos encontrados</td>
+<td>Nível de risco (baixo, médio ou alto), justificativa, confiança, normas aplicáveis e indicação de necessidade de bloqueio e etiquetagem (LOTO)</td>
+<td>Sim — calcula uma recomendação, sem alterar a máquina</td>
+<td>Falso risco baixo pode expor o técnico a uma falha ou condição insegura; falso risco alto pode provocar parada e manutenção desnecessárias</td>
+</tr>
+<tr>
+<td>Comunicar o parecer ao técnico</td>
+<td>Parecer validado, identificador da OS e evidências que o sustentam</td>
+<td>Recomendação curta em português, com justificativa, normas identificadas e indicação de LOTO</td>
+<td>Parcialmente — uma correção pode ser enviada, mas a mensagem original já pode ter sido lida e influenciado a decisão</td>
+<td>Uma recomendação incorreta ou ambígua pode induzir uma intervenção insegura, uma parada desnecessária ou o descumprimento de uma norma</td>
+</tr>
+<tr>
+<td>Registrar a avaliação para auditoria</td>
+<td>OS, dados e evidências usados, parecer, data e versão das fontes/regras</td>
+<td>Registro rastreável da avaliação e de sua justificativa</td>
+<td>Parcialmente — um registro incorreto pode ser corrigido por adendo, mas não deve desaparecer do histórico</td>
+<td>Registro associado à OS errada ou sem as evidências pode comprometer a auditoria e decisões posteriores</td>
+</tr>
+<tr>
+<td>Escalar um caso ao supervisor de segurança</td>
+<td>Parecer e motivo de escalonamento, como risco alto, baixa confiança, dados conflitantes ou requisito não localizado</td>
+<td>Solicitação de revisão humana com a OS, as evidências e a dúvida identificada</td>
+<td>Parcialmente — a solicitação pode ser encerrada ou redirecionada, mas o aviso já foi recebido</td>
+<td>Escalonamento excessivo gera fadiga e atraso; deixar de escalar um caso incerto pode permitir uma decisão insegura</td>
+</tr>
+<tr>
+<td>Executar o bloqueio e a etiquetagem (LOTO) da máquina</td>
+<td>Máquina e fontes de energia identificadas, procedimento aplicável e autorização do responsável</td>
+<td>Máquina isolada e bloqueada, com identificação e confirmação da execução pelo profissional responsável</td>
+<td>Não — remover o bloqueio exige procedimento autorizado; o risco ou a exposição causados por uma execução errada não são desfeitos por um clique</td>
+<td>Bloquear a máquina errada interrompe a produção; deixar uma fonte de energia ativa ou remover o bloqueio indevidamente pode causar acidente grave durante a intervenção</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quem executa cada ação:</strong> o agente pode consultar os dados e documentos
+disponíveis, preparar o parecer e registrar a avaliação. Ele comunica a
+recomendação ao técnico; casos incertos ou de risco alto são encaminhados ao
+supervisor. O técnico avalia e decide como proceder. O LOTO é executado e
+confirmado exclusivamente por profissional autorizado, conforme o procedimento
+de segurança aplicável — não pelo agente.</p>
+<p><strong>O que o agente JAMAIS executa sozinho:</strong> comandar a parada ou a partida da
+máquina, isolar ou reenergizar fontes de energia, aplicar ou remover cadeados e
+etiquetas, nem declarar a máquina liberada para intervenção. O agente pode
+indicar que o LOTO é necessário e solicitar confirmação humana; a execução
+física e a autorização permanecem com profissionais responsáveis.</p>
+</body></html>

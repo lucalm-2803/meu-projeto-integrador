@@ -1,0 +1,66 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Desconhecido </title></head><body>
+<h1 id="catalogo-de-acoes-modelo-para-preencher">Catálogo de ações — modelo para preencher</h1>
+<!--
+Este arquivo é para preencher: uma linha por ação que o SEU agente vai
+poder executar. As perguntas de cada coluna estão aqui em comentário.
+
+As quatro perguntas que decidem se uma linha está boa:
+  - Ação de ESCRITA também? As que alteram o mundo são as que exigem
+    cuidado — e são justamente as que mais ficam de fora.
+  - COMUNICAR é ação? Avisar, escalar, transferir, pedir confirmação:
+    entram com entrada, saída e risco como as outras.
+  - "É reversível?" pergunta se o efeito pode ser DESFEITO sem custo
+    maior que o da própria ação.
+  - O risco diz risco DE QUÊ — "baixo" não é descrição; "paga duas vezes
+    uma nota que já estava paga" é.
+
+Este catálogo é, literalmente, a lista de ferramentas que você vai
+implementar em D10. Cada linha vira uma função com contrato.
+-->
+
+<table>
+<thead>
+<tr>
+<th>Ação</th>
+<th>Entrada</th>
+<th>Saída</th>
+<th>É reversível?</th>
+<th>Risco se errar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[nome com verbo no infinitivo]</td>
+<td>[o que a ação recebe]</td>
+<td>[o que ela devolve]</td>
+<td>[sim / não / parcialmente — e por quê]</td>
+<td>[o que acontece se a ação errar, e para quem]</td>
+</tr>
+<tr>
+<td>[ex.: consultar o registro da máquina]</td>
+<td>[identificador da máquina]</td>
+<td>[última manutenção, pendências, leituras]</td>
+<td>[sim — só lê]</td>
+<td>[falso negativo adia a causa certa; custo de tempo]</td>
+</tr>
+<tr>
+<td>[ ... ]</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[ ... ]</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quem executa cada ação</strong> (o agente sozinho? com confirmação humana? só
+humano?): [responda aqui — esta coluna mental vira política em D12]</p>
+<p><strong>O que o agente JAMAIS executa sozinho:</strong> [responda aqui — a ação
+irreversível de risco alto que fica fora do alcance dele]</p>
+</body></html>
