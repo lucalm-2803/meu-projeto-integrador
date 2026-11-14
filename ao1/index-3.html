@@ -1,0 +1,28 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Desconhecido </title></head><body>
+<h1 id="correlacao-e-causalidade-ao1">Correlação e causalidade — AO1</h1>
+<h2 id="associacao-observada">Associação observada</h2>
+<p>No conjunto de avaliação <code>casos-ams-60.csv</code> (60 casos, dos quais 20 têm
+<code>falhou_depois = 1</code>), a temperatura medida e a ocorrência posterior de falha
+apresentam associação positiva: correlação ponto-bisserial de Pearson
+<code>r = 0,601</code> e correlação de Spearman <code>rho = 0,543</code>. A temperatura média foi
+<code>71,81 °C</code> nos casos com falha posterior e <code>62,74 °C</code> nos demais.</p>
+<p>Isso descreve uma associação neste conjunto; não demonstra que o aumento da
+temperatura cause a falha.</p>
+<h2 id="duas-explicacoes-nao-causais-plausiveis">Duas explicações não causais plausíveis</h2>
+<ol>
+<li><strong>Confundimento:</strong> tipo de máquina, carga ou regime de operação podem
+   influenciar tanto a temperatura normal quanto a chance de falha. Sem
+   controlar essas variáveis, parte da associação atribuída à temperatura
+   pode vir dessas diferenças.</li>
+<li><strong>Viés de seleção:</strong> o arquivo é um conjunto de avaliação pequeno e não
+   documenta uma amostragem aleatória de ordens reais. Se casos de alerta ou
+   de falha foram incluídos com maior frequência, a associação pode ser mais
+   forte do que seria na frota em produção.</li>
+</ol>
+<h2 id="limites">Limites</h2>
+<p>Os 60 casos não bastam para estabelecer causalidade nem para generalizar a
+associação para a frota. A temperatura pode ser um sinal de uma falha
+incipiente, mas isso também não prova a direção causal. Uma análise melhor
+exigiria dados representativos, identificação da máquina, carga operacional
+e validação temporal dos desfechos.</p>
+</body></html>
