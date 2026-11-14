@@ -1,0 +1,56 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Desconhecido </title></head><body>
+<h1 id="o-mapa-do-meu-dominio-conferencia-laboratorio-04">O mapa do meu domínio — conferência (Laboratório 04)</h1>
+<p>Conjunto: manutencao · 384 dimensões antes da redução
+Escolha registrada (slide 55): normalizado · semente da vizinhança: 20260901
+Mapas: mapa-do-espaco.png (componentes principais à esquerda, vizinhança à direita) · pontos: mapa-pontos.csv</p>
+<h2 id="passo-4-os-tres-pares-que-voce-escolheu-no-mapa-slide-52">Passo 4 — os três pares que você escolheu no mapa (slide 52)</h2>
+<p>Comando usado: <code>python esqueleto.py manutencao --pares 60,65 105,167 26,187</code></p>
+<table>
+<thead>
+<tr>
+<th>par</th>
+<th align="right">cosseno original</th>
+<th>a vizinhança visual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(60, 65)</td>
+<td align="right">+0.1901</td>
+<td>NÃO confirma</td>
+</tr>
+<tr>
+<td>(105, 167)</td>
+<td align="right">+0.5892</td>
+<td>confirma</td>
+</tr>
+<tr>
+<td>(26, 187)</td>
+<td align="right">+0.7164</td>
+<td>confirma</td>
+</tr>
+</tbody>
+</table>
+<h2 id="as-quatro-perguntas-do-slide-53">As quatro perguntas do slide 53</h2>
+<ol>
+<li>
+<p>Os dois métodos produzem os mesmos agrupamentos?
+R: Não. A PCA espalha os pontos de forma mais global e determinística; o t-SNE enfatiza vizinhanças locais e forma grupos compactos diferentes. Por exemplo, (60, 65) fica próximo na PCA, mas separado no t-SNE.</p>
+</li>
+<li>
+<p>Há grupo que só aparece em um deles?
+R: Sim. No t-SNE aparecem pequenos agrupamentos locais mais compactos que não ficam tão definidos na PCA. Esses grupos devem ser interpretados como vizinhanças locais; a distância entre grupos no t-SNE não representa necessariamente semelhança.</p>
+</li>
+<li>
+<p>Os vizinhos visuais confirmam no cosseno original?
+R: Dois dos três pares confirmam pelo critério do laboratório (cosseno &gt;= 0.5): (105, 167) deu 0.5892 e (26, 187) deu 0.7164. O par (60, 65) não confirmou: 0.1901.</p>
+</li>
+<li>
+<p>O que aconteceria com um vetor novo, fora do conjunto?
+R: Na PCA, aplicaria ao vetor novo a mesma transformação fixa: subtrair o centro aprendido e multiplicar pelas componentes. No t-SNE deste laboratório não há projeção direta para novos vetores; seria preciso refazer a redução incluindo o novo ponto.</p>
+</li>
+</ol>
+<h2 id="o-caso-em-que-o-mapa-enganou-criterio-do-slide-52">O caso em que o mapa enganou (critério do slide 52)</h2>
+<p>Par e o que a figura sugeria, e o que o cosseno original disse:</p>
+<p>R: O par (60, 65) parece próximo na PCA (distância 2D 0.2332), mas as frases tratam de componentes diferentes: soldagem dos contatos de um contator e atraso de resposta de uma válvula solenoide. O cosseno original é apenas 0.1901, portanto a proximidade visual da PCA não se confirma. No t-SNE, os pontos ficam bem mais separados.</p>
+</body></html>
