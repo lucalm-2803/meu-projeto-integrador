@@ -8,9 +8,9 @@
 
 | Taxa | Última linha da saída (perda, w, b) |
 |---|---|
-| 0,001 | |
-| 0,1 | |
-| 1,5 | |
+| 0,001 | passo  200 perda 22462.1 w 215.016 b -17.7381 |
+| 0,1 | passo  200 perda 0.752176 w 300.008 b 4.91185 |
+| 1,5 | passo  200 perda inf w -3.12216e+190 b 4.826e+189 |
 
 ## As quatro perguntas do slide 11
 
