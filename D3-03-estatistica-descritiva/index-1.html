@@ -1,0 +1,198 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Desconhecido </title></head><body>
+<h1 id="o-meu-dado-com-rigor-relatorio-do-laboratorio-03">O meu dado, com rigor — relatório do Laboratório 03</h1>
+<p>Conjunto: <code>/home/luciano/CEDAGI/meu-projeto-integrador/data/dataset.csv</code> · 60 linhas · 5 variáveis</p>
+<p>Medidas geradas pelo <code>medidas.py</code>: desvio padrão amostral (ddof=1),
+quartis por interpolação linear, extremos pela regra da amplitude
+interquartil — fora de 1,5 × a caixa (slide 24). As medidas são do
+programa; as decisões são SUAS. Preencha todos os blocos <code>R:</code> e
+confira com <code>python teste.py</code>.</p>
+<h2 id="medidas-por-variavel">Medidas por variável</h2>
+<table>
+<thead>
+<tr>
+<th>variável</th>
+<th>tipo</th>
+<th align="right">n</th>
+<th align="right">faltantes</th>
+<th align="right">média</th>
+<th align="right">mediana</th>
+<th align="right">desvio</th>
+<th align="right">Q1</th>
+<th align="right">Q3</th>
+<th align="right">AIQ</th>
+<th align="right">mín</th>
+<th align="right">máx</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id_dia</td>
+<td>categórica (60 valores; moda: d14)</td>
+<td align="right">60</td>
+<td align="right">0</td>
+<td align="right">—</td>
+<td align="right">—</td>
+<td align="right">—</td>
+<td align="right">—</td>
+<td align="right">—</td>
+<td align="right">—</td>
+<td align="right">—</td>
+<td align="right">—</td>
+</tr>
+<tr>
+<td>temperatura_c</td>
+<td>numérica</td>
+<td align="right">56</td>
+<td align="right">4</td>
+<td align="right">63.0839</td>
+<td align="right">62.4500</td>
+<td align="right">5.0535</td>
+<td align="right">61.7750</td>
+<td align="right">63.1250</td>
+<td align="right">1.3500</td>
+<td align="right">60.2000</td>
+<td align="right">99.5000</td>
+</tr>
+<tr>
+<td>vibracao_mm_s</td>
+<td>numérica</td>
+<td align="right">60</td>
+<td align="right">0</td>
+<td align="right">5.1100</td>
+<td align="right">5.1000</td>
+<td align="right">0.3887</td>
+<td align="right">4.8000</td>
+<td align="right">5.4000</td>
+<td align="right">0.6000</td>
+<td align="right">4.3000</td>
+<td align="right">6.0000</td>
+</tr>
+<tr>
+<td>horas_desde_manutencao</td>
+<td>numérica</td>
+<td align="right">60</td>
+<td align="right">0</td>
+<td align="right">748.0000</td>
+<td align="right">290.0000</td>
+<td align="right">1474.7548</td>
+<td align="right">123.7500</td>
+<td align="right">580.0000</td>
+<td align="right">456.2500</td>
+<td align="right">35.0000</td>
+<td align="right">7800.0000</td>
+</tr>
+<tr>
+<td>chamados_no_mes</td>
+<td>numérica</td>
+<td align="right">60</td>
+<td align="right">0</td>
+<td align="right">2.0167</td>
+<td align="right">1.0000</td>
+<td align="right">6.0155</td>
+<td align="right">0.0000</td>
+<td align="right">2.0000</td>
+<td align="right">2.0000</td>
+<td align="right">0.0000</td>
+<td align="right">47.0000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="extremos-marcados-fora-de-15-a-caixa-slide-24">Extremos marcados (fora de 1,5 × a caixa — slide 24)</h2>
+<h3 id="extremos-de-temperatura_c-1-valores-limites-597500-651500">Extremos de <code>temperatura_c</code> — 1 valor(es), limites [59.7500; 65.1500]</h3>
+<table>
+<thead>
+<tr>
+<th align="right">linha</th>
+<th align="right">valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">35</td>
+<td align="right">99.5000</td>
+</tr>
+</tbody>
+</table>
+<p>Decisão sobre ESTES extremos — manter ou remover, caso a caso,
+com o motivo (slide 25: quem remove sem dizer, mente por omissão):</p>
+<p>R:</p>
+<h3 id="extremos-de-horas_desde_manutencao-6-valores-limites-5606250-12643750">Extremos de <code>horas_desde_manutencao</code> — 6 valor(es), limites [-560.6250; 1264.3750]</h3>
+<table>
+<thead>
+<tr>
+<th align="right">linha</th>
+<th align="right">valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">25</td>
+<td align="right">1450.0000</td>
+</tr>
+<tr>
+<td align="right">31</td>
+<td align="right">2100.0000</td>
+</tr>
+<tr>
+<td align="right">34</td>
+<td align="right">3400.0000</td>
+</tr>
+<tr>
+<td align="right">36</td>
+<td align="right">5100.0000</td>
+</tr>
+<tr>
+<td align="right">38</td>
+<td align="right">6800.0000</td>
+</tr>
+<tr>
+<td align="right">58</td>
+<td align="right">7800.0000</td>
+</tr>
+</tbody>
+</table>
+<p>Decisão sobre ESTES extremos — manter ou remover, caso a caso,
+com o motivo (slide 25: quem remove sem dizer, mente por omissão):</p>
+<p>R:</p>
+<h3 id="extremos-de-chamados_no_mes-1-valores-limites-30000-50000">Extremos de <code>chamados_no_mes</code> — 1 valor(es), limites [-3.0000; 5.0000]</h3>
+<table>
+<thead>
+<tr>
+<th align="right">linha</th>
+<th align="right">valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">32</td>
+<td align="right">47.0000</td>
+</tr>
+</tbody>
+</table>
+<p>Decisão sobre ESTES extremos — manter ou remover, caso a caso,
+com o motivo (slide 25: quem remove sem dizer, mente por omissão):</p>
+<p>R:</p>
+<h2 id="faltantes-os-tres-mecanismos-do-slide-26">Faltantes (os três mecanismos do slide 26)</h2>
+<h3 id="faltantes-de-temperatura_c-4-67-das-linhas">Faltantes de <code>temperatura_c</code> — 4 (6.7% das linhas)</h3>
+<p>Mecanismo provável — marque UM com um <code>x</code> dentro do colchete:</p>
+<ul>
+<li>[ ] perdido ao acaso — a falta não depende de nada</li>
+<li>[ ] perdido condicionalmente — depende de outra variável observada</li>
+<li>[ ] perdido por causa do próprio valor — falta porque o valor era o que era</li>
+</ul>
+<p>Por quê:</p>
+<p>R:</p>
+<h2 id="as-quatro-perguntas-do-slide-29">As quatro perguntas do slide 29</h2>
+<p><strong>1. Média e mediana se separam em alguma variável? Em qual?</strong></p>
+<p>R:</p>
+<p><strong>2. Quantos extremos foram marcados, e quantos você decidiu manter?</strong></p>
+<p>R:</p>
+<p><strong>3. Algum faltante parece do terceiro mecanismo?</strong></p>
+<p>R:</p>
+<p><strong>4. O que a análise da D1 não tinha visto?</strong></p>
+<p>R:</p>
+<h2 id="comparacao-com-a-analise-exploratoria-da-d1">Comparação com a análise exploratória da D1</h2>
+<p>O que mudou de lá para cá — o que a análise de lá não tinha visto,
+e o que estas decisões escritas mudam no conjunto que a D5 vai usar:</p>
+<p>R:</p>
+</body></html>
